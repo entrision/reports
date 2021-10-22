@@ -1,0 +1,19 @@
+
+<% if chart %>
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+  <% if chart['type'] == 'line' %>
+    <%= line_chart chart['data'] %>
+  <% elsif chart['type'] == 'bar' %>
+    <%= bar_chart chart['data'] %>
+  <% elsif chart['type'] == 'column' %>
+    <%= column_chart chart['data'] %>
+  <% elsif chart['type'] == 'pie' %>
+    <%= pie_chart chart['data'] %>
+  <% elsif chart['type'] == 'area' %>
+    <%= area_chart chart['data'] %>
+  <% elsif chart['type'] == 'geo' %>
+    <%= geo_chart chart['data'], library: {region: 'US', resolution: 'provinces'} %>
+  <% else %>
+    <%= line_chart chart[:data] %>
+  <% end %>
+<% end %>
