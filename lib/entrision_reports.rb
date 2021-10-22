@@ -1,4 +1,6 @@
-require 'entrision_reports/version'
+# frozen_string_literal: true
+
+require_relitive 'entrision_reports/version'
 require_relative 'reports/base'
 require_relative 'entrision_reports/engine'
 
