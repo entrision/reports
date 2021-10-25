@@ -22,7 +22,49 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Make sure to install the active_admin reports page.
+
+```bash
+bunde exec rails g entrision_reports:install
+
+```
+
+This generate a report with
+
+```bash
+bundle exec rails g entrision_reports:report name_of_report
+```
+
+This will create a definition file in lib/reports/name_of_report.rb
+
+Valid Formats are:
+
+Hidden, Percentage, Link, DateTime, Email, Money, Date, Integer, TextBox, Javascript
+
+Valid Charts are:
+
+line, bar, column, pie, geo
+
+the **generate_data** method needs to return an array of rows for example
+
+```ruby
+def generate_data
+  [['10/1/2001', 1,2,3], ['10/2/2001', 4,5,6]]
+end
+
+```
+
+the **chart** method needs to return either false for no chart or a hash
+
+```ruby
+def chart
+  data = [['10/1/2001', 3], ['10/2/2001', 6]]
+  { title: 'A chart title', type: 'area', data: data }
+end
+```
+
+In development charts will generate in real time so that errors are easier to see. In production and staging,
+chart data is generated in a worker process. This creates a slightly different behavior in dev then in production.
 
 ## Development
 
@@ -47,8 +89,4 @@ To go back to the git version
 ```bash
 bundle config --delete local.entrision_reports
 ```
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/entrision_reports.
 
