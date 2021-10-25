@@ -4,15 +4,14 @@ require 'rails/generators'
 
 module EntrisionReports
   module Generators
-    class InstallGenerator < Rails::Generators::NamedBase
+    class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path('templates', __dir__)
+
+      desc 'Install basic report files'
       def install_files
-        create_file "app/admin/reports.rb", <<- FILE
-          some text
-        FILE
+        template('reports.rb', 'app/admin/reports.rb')
       end
     end
   end
 end
 
-# also need a report generator
