@@ -1,0 +1,21 @@
+<% if @viewer == 'pending' %>
+  <%= render partial: 'admin/report_viewer/pending', locals: { job_id: @headers } %>
+<% elsif @viewer == 'single' %>
+  <%= render partial: 'admin/report_viewer/single', locals: { headers: @headers, results: @results, formats: @formats } %>
+<% elsif @viewer == 'one column' %>
+  <% if @chart %>
+    <%= render partial: 'admin/report_viewer/chart', locals: { chart: @chart } %>
+  <% end %>
+  <%= render partial: 'admin/report_viewer/single', locals: { headers: @headers, results: @results, formats: @formats } %>
+<% elsif @viewer == 'two column' %>
+  <%= render partial: 'admin/report_viewer/chart', locals: { chart: @chart } %>
+  <%= render partial: 'admin/report_viewer/single', locals: { headers: @headers, results: @results, formats: @formats } %>
+<% elsif @viewer == 'duplex two column' %>
+  <% @chart.each do |c| %>
+    <%= render partial: 'admin/report_viewer/chart', locals: { chart: c } %>
+  <% end %>
+  <%= render partial: 'admin/report_viewer/single', locals: { headers: @headers, results: @results, formats: @formats } %>
+<% else %>
+  <h1>Invalid Report Definition</h1>
+<% end %>
+
