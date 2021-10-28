@@ -66,6 +66,13 @@ end
 In development charts will generate in real time so that errors are easier to see. In production and staging,
 chart data is generated in a worker process. This creates a slightly different behavior in dev then in production.
 
+To use reports outside of active admin, make sure to add a route like
+
+```ruby
+get '/reports'=>'reports#index', as: 'reports'
+get '/reports/user_by_date'=>'reports#show', report: 'user_by_date', viewer: 'one_column', as: 'reports_user_by_date'
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -89,4 +96,3 @@ To go back to the git version
 ```bash
 bundle config --delete local.entrision_reports
 ```
-

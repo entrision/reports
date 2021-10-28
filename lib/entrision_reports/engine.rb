@@ -4,6 +4,7 @@ module EntrisionReports
   class Engine < Rails::Engine
     initializer :entrision_reports_engine do
       ActiveAdmin.application.load_paths << File.dirname(__FILE__) + '/admin'
+      ActionView::Base.send :include, EntrisionReports::ReportsHelper
 
       # raise ActiveAdmin.application.load_paths.to_s
     end
