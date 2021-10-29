@@ -24,7 +24,11 @@
                 <% totals[s] = totals[s] + column %>
                 <%= number_with_precision(column, precision: 2) %>%
               <% elsif formats[s] == 'Link' %>
-                <%= link_to column[0], column[1] %>
+                <% if column.is_a? Array %>
+                  <%= link_to column[0], column[1] %>
+                <% else %>
+                  <%= column.to_s %>
+                <% end %>
               <% elsif formats[s] == "DateTime" %>
                 <%= l(column, format: :us_long) if column %>
               <% elsif formats[s] == 'Email' %>
