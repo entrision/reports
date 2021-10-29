@@ -6,6 +6,13 @@ module Reports
   class Base
     attr_accessor :start_date, :end_date, :params, :options
 
+    def self.text_alignment(format)
+      return 'right' if %w[Integer Money].include?(format)
+      return 'left' if format == 'String'
+
+      'center'
+    end
+
     def initialize(start_date = Date.today - 31.days, end_date = Date.today, options = {})
       @start_date = start_date
       @end_date = end_date

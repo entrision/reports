@@ -36,7 +36,7 @@
               <% elsif formats[s] == 'Money' %>
                 $<%= number_with_precision(column, precision: 2) %>
                 <% totals[s] = totals[s] + column %>
-              <% elsif formats[s] == 'Date' %>
+              <% elsif formats[s] == 'Date' and column.to_s != '0' %>
                 <%= l(Date.parse(column)) unless column.blank? %>
               <% elsif formats[s] == 'Integer' %>
                 <% totals[s] = totals[s] + (column || 0) %>

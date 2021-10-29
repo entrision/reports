@@ -14,4 +14,3 @@ module EntrisionReports
     end
   end
 end
-

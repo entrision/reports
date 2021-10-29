@@ -1,12 +1,9 @@
+# frozen_string_literal: true
+
 module EntrisionReports
   module ReportsHelper
     def report_align(format)
-      if format == "Integer" or format == "Money"
-        return "right"
-      elsif format == "String"
-        return "left"
-      end
-      return "center"
+      Reports::Base.text_alignment(format)
     end
   end
 end

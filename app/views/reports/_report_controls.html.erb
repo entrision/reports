@@ -1,0 +1,28 @@
+<div class='row mb-4 mt-2'>
+  <div class="card col-12">
+    <div class="card-header">
+      Report Controls
+    </div>
+    <div class="card-body">
+      <div class='row'>
+        <div class="col-12 col-md-5">
+          <div class="mb-3">
+            <label for="start_date" class="form-label">Start Date</label>
+            <input type="date" class="form-control" id="start_date" placeholder="MM/DD/YYYY" name='start_date' value='<%= @start_date %>'>
+          </div>
+        </div>
+        <div class="col-12 col-md-5">
+          <div class="mb-3">
+            <label for="end_date" class="form-label">End Date</label>
+            <input type="date" class="form-control" id="end_date" placeholder="MM/DD/YYYY" name='end_date' value='<%= @end_date %>'>
+          </div>
+        </div>
+        <div class="col-12 col-md-2 text-right d-grid gap-2">
+          <%= link_to 'submit', '', class: 'btn btn-success', id: 'go' %>
+          <%= link_to 'CSV', params.to_unsafe_h.merge!(format:'csv'), class: 'btn btn-info' %>
+          <%= link_to 'Clear Cache', reports_clear_cache_path, class: 'btn btn-warning' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

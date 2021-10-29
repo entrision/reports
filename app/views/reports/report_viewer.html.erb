@@ -1,3 +1,6 @@
+<div class='container'>
+  <%= render partial: 'reports/report_controls' %>
+<div class='row'>
 <% if @viewer == 'pending' %>
   <%= render partial: 'admin/report_viewer/pending', locals: { job_id: @headers } %>
 <% elsif @viewer == 'single' %>
@@ -18,4 +21,44 @@
 <% else %>
   <h1>Invalid Report Definition</h1>
 <% end %>
+</div>
+</div>
 
+<script type="text/javascript">
+  /*
+   * queryParameters -> handles the query string parameters
+   * queryString -> the query string without the fist '?' character
+   * re -> the regular expression
+   * m -> holds the string matching the regular expression
+   */
+  var queryParameters = {}, queryString = location.search.substring(1),
+      re = /([^&=]+)=([^&]*)/g, m;
+
+  // Creates a map with the query string parameters
+  while (m = re.exec(queryString)) {
+      queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+  }
+
+  // Add new parameters or update existing ones
+
+
+  /*
+   * Replace the query portion of the URL.
+   * jQuery.param() -> create a serialized representation of an array or
+   *     object, suitable for use in a URL query string or Ajax request.
+   */
+
+  $('#go').click(function(event) {
+    //alert('test');
+    start = $("#start_date").val();
+    end = $("#end_date").val();
+    queryParameters['start_date'] = start;
+    queryParameters['end_date'] = end;
+    go = window.location +"?" + $.param(queryParameters);
+    window.location.href = go;
+    location.search = $.param(queryParameters);
+    return false;
+    //window.location = window.location +"?" + $.param(queryParameters));
+  });
+
+</script>

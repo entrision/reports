@@ -69,9 +69,12 @@ chart data is generated in a worker process. This creates a slightly different b
 To use reports outside of active admin, make sure to add a route like
 
 ```ruby
-get '/reports'=>'reports#index', as: 'reports'
-get '/reports/user_by_date'=>'reports#show', report: 'user_by_date', viewer: 'one_column', as: 'reports_user_by_date'
+  get '/reports' => 'reports#index', as: 'reports'
+  get '/reports/clear' => 'reports#clear_cache', as: 'reports_clear_cache'
+  get '/reports/sample' => 'reports#show', report: 'sample', viewer: 'single', as: 'reports_sample'
 ```
+
+The default views are based on bootstrap.
 
 ## Development
 
