@@ -74,7 +74,8 @@ To use reports outside of active admin, make sure to add a route like
   get '/reports/sample' => 'reports#show', report: 'sample', viewer: 'single', as: 'reports_sample'
 ```
 
-The default views are based on bootstrap.
+The default views are based on bootstrap. But can be overridden.
+
 
 ## Development
 

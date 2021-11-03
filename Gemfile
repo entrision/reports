@@ -8,3 +8,4 @@ gemspec
 gem 'activeadmin'
 gem 'rake', '~> 12.0'
 gem 'sidekiq'
+gem 'chartkick'
