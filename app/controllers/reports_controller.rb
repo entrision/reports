@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
   def show
     return unless can_view_report? params[:report].to_sym
 
-    report = "Reports::#{params[:report].camelize}".constantize.new(@start_date, @end_date, { params: params, current_user: current_user })
+    report = "Reports::#{params[:report].camelize}".constantize.new(@start_date, @end_date, { params: params, current_user_id: current_user.id })
     @viewer, @title, @headers, @formats, @results, @chart = report.get
     respond_to do |format|
       format.html { render 'report_viewer' }
