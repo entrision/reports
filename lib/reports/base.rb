@@ -66,7 +66,8 @@ module Reports
 
     def fill_cache
       return unless @cache.data.blank?
-      return unless @cache.expires_at < DateTime.now
+      return unless @cache.expires_at.blank?
+      return unless @cache.expires_at.blank? < DateTime.now
 
       if Rails.env.development?
         @cache.update_column :expires_at, DateTime.now + 2.minutes
